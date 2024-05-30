@@ -1,7 +1,10 @@
 {
   "name": "mymoss",
   "version": "0.1.0",
-  "private": true,
+  "engines": {
+    "node": "18.20.2",
+    "npm": "10.5.0"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -26,7 +29,7 @@
       "last 1 safari version"
     ]
   },
-  "description": "Custom Coding Landing Site",
+  "description": "Software Solutions Landing Site",
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -51,5 +54,6 @@
   "devDependencies": {
     "cypress": "^13.10.0",
     "jasmine": "^5.1.0"
-  }
+  },
+  "main": "server.js"
 }
