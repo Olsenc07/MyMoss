@@ -8,7 +8,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Intro />
+      {/* add landing */}
         <Routes>
           <Route path="/" element={<Intro />} />
           {/* <Route path="/info" element={<info />} /> */}
