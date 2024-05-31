@@ -13,7 +13,7 @@ server.use('/api/sendGrid', emailRouter);
 
 
 async function startServer() {
-    const port = process.env['PORT'] || 4200;
+    const port = process.env['PORT'] || 3000;
     const server = createServer();
     (await server).listen(port, () => {
         console.log(`Node Express server listening`);

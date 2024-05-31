@@ -10,7 +10,7 @@ export default defineConfig({
           }
           return config;
         },
-        baseUrl: 'http://localhost:4200',
+        baseUrl: 'http://localhost:3000',
         responseTimeout: 40000,
         specPattern: 'cypress/e2e/*.cy.{js,jsx,}'
       }
