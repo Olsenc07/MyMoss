@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 import './intro.module.scss';
 
@@ -48,8 +49,15 @@ const Intro = () => {
               </Card.Body>
             </Card>
           </Col>
-          
         </Row>
+     {/* project details */}
+     <Row className="mt-4">
+        <Col md={12} className="text-center">
+          <Link to="/projects">
+            <Button variant="outline-primary">View All Projects</Button>
+          </Link>
+        </Col>
+      </Row>
       </Container>
 // Explain more
 // with an extensive knowledge stacks we can optimize your needs and budget

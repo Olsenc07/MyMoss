@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 
-const ProjectCard = ({ project }) => {
+ const ProjectCard = ({ message }) => {
   const [isVisible, setIsVisible] = useState(false);
   const cardRef = useRef(null);
 
@@ -11,7 +11,8 @@ const ProjectCard = ({ project }) => {
     if (cardRef.current) observer.observe(cardRef.current);
   }, []);
 
-  const { animation, image, title, description, projectDetails, repoUrl, url } = project;
+  // needs to be from message object array
+  const { animation, image, title, description, projectDetails, repoUrl, url } = message;
   const { keyFeatures, technologies } = projectDetails;
 
   return (

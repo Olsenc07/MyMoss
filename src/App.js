@@ -2,13 +2,12 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
 // intro can be on this page
-import Intro from './components/intro/intro.component';
-import Contact from './components/contact/contact.component';
-import Footer from './components/footer/footer.component';
+import Intro from './components/intro/intro';
+// import Contact from './components/contact/contact.component';
+import Footer from './components/footer/footer';
 
 // these should be pages
-import Neslo from './pages/neslo.component';
-import Skalarly from './pages/skalarly.component';
+import ProjectsPage from './pages/ProjectsPage';
 
 
 function App() {
@@ -17,8 +16,7 @@ function App() {
       {/* add landing */}
         <Routes>
           <Route path="/" element={<Intro />} />
-          <Route path="/neslo" element={<Neslo />} /> 
-          <Route path="/skalarly" element={<Skalarly />} />
+          <Route path="/projects" element={<ProjectsPage />} />
           <Route path="*" element={<Intro />} />
         </Routes>
         <Footer />
