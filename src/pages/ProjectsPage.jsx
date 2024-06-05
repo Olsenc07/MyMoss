@@ -1,7 +1,7 @@
 import React from "react";
-import { ProjectCard } from "../project-card/project-card.config.jsx"
+import ProjectCard from "../components/project-card/ProjectCard.jsx"
 
-const Home = () => {
+const ProjectsPage = () => {
     const projects = [
         {   animation: 'fadeIn',
             image: 'src/assets/Neslo.ico',
@@ -52,4 +52,4 @@ return(
 )
 };
 
-export default Home;
+export default ProjectsPage;
