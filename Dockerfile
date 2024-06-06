@@ -23,7 +23,7 @@ FROM node:18.20.2
 WORKDIR /app
 
 # Copy the built application from the previous step
-COPY --from=build-step /app/dist /app/dist
+COPY --from=build-step /app/build /app/build
 COPY --from=build-step /app/backend /app/backend
 COPY --from=build-step /app/node_modules /app/node_modules
 COPY --from=build-step /app/package*.json ./
