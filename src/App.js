@@ -13,14 +13,12 @@ import ProjectsPage from './pages/ProjectsPage';
 function App() {
   return (
     <Router>
-      {/* add landing */}
         <Routes>
           <Route path="/" element={<Intro />} />
           <Route path="/projects" element={<ProjectsPage />} />
           <Route path="*" element={<Intro />} />
         </Routes>
         <Footer />
-       
     </Router>
   );
 }

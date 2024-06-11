@@ -15,7 +15,7 @@ const Intro = () => {
         <Row className="mt-4">
           <Col md={4}>
             <Card>
-              <Card.Img variant="top" src="project1.png" />
+              <Card.Img variant="top" src="Neslo.ico" />
               <Card.Body>
                 <Card.Title>Project 1</Card.Title>
                 <Card.Subtitle>Neslo</Card.Subtitle>
@@ -33,7 +33,7 @@ const Intro = () => {
           </Col>
           <Col md={4}>
             <Card>
-              <Card.Img variant="top" src="project2.png" />
+              <Card.Img variant="top" src="Skalarly.ico"/>
               <Card.Body>
                 <Card.Title>Project 2</Card.Title>
                 <Card.Subtitle>Skalarly</Card.Subtitle>

@@ -4,7 +4,7 @@ import ProjectCard from "../components/project-card/ProjectCard.jsx"
 const ProjectsPage = () => {
     const projects = [
         {   animation: 'fadeIn',
-            image: 'src/assets/Neslo.ico',
+            image: 'Neslo.ico',
             title:  'Neslo | Premium Windows and Doors',
             description: 'A premium windows and doors company based in cenntral Alberta.',
             projectDetails: {
@@ -46,7 +46,9 @@ const ProjectsPage = () => {
 
 return(
     <div>
-        <ProjectCard message={projects} />
+        {projects.map((project, index) => (
+        <ProjectCard key={index} message={project} />
+        ))}
     </div>
 
 )
