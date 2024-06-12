@@ -12,9 +12,9 @@ const Footer = () => {
       <div className="container">
         <div className="row align-items-center"> 
           <div className="d-flex flex-column align-items-center"> 
-          <div>
+          {/* <div className="img-fluid img">
             <img src='chazz.jpg' alt="Chase Olsen" className="profile-pic" />
-          </div>
+          </div> */}
             <h3 className="ms-3">Chase Olsen</h3> 
           </div>
           <div className="col-md-8">
@@ -34,7 +34,7 @@ const Footer = () => {
                 </div>
               </div>
               <div className='row'>
-              <h6 className="col-12 mb-2">Socials</h6>
+              <h6 className="col-12 mb-2">Connect With Me</h6>
               <div className="col-12 col-md-6">
                   <a href="https://www.linkedin.com/in/chase-ol/" className="text-dark d-flex align-items-center" target="_blank" rel="noopener noreferrer">
                   <FontAwesomeIcon icon={faLinkedin}  className="me-2"/>

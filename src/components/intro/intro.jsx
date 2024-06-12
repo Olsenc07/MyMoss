@@ -1,24 +1,72 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 import './intro.module.scss';
 
-
 const Intro = () => {
+  // Title Moss Aniamtion
+  const [title, setTitle] = useState('');
+  const fullTitle = 'My Modern Software Solutions';
+  const [mossGrowth, setMossGrowth] = useState(0);
+  const [letterColors, setLetterColors] = useState({});
+
+  useEffect(() => {
+    let i = 0;
+    const titleInterval = setInterval(() => {
+      setTitle(fullTitle.substring(0, i + 1));
+      // moss gets thicker green color
+      setLetterColors(prevColors => ({
+        ...prevColors,
+        [fullTitle[i]]: 'lightgreen' 
+      }));
+      i++;
+      if (i > fullTitle.length) {
+        clearInterval(titleInterval);
+      }
+    }, 100); 
+
+    const mossInterval = setInterval(() => {
+      setMossGrowth(prevGrowth => prevGrowth + 0.03); 
+      if (mossGrowth >= 1) {
+        clearInterval(mossInterval);
+      }
+    }, 77); 
+
+    return () => {
+      clearInterval(titleInterval);
+      clearInterval(mossInterval);
+    };
+  }, []);
+
+  useEffect(() => {
+    const colorChangeInterval = setInterval(() => {
+      for (const letter in letterColors) {
+        if (letterColors[letter] === 'lightgreen') {
+          setLetterColors(prevColors => ({
+            ...prevColors,
+            [letter]: 'darkgreen' // moss fully grown
+          }));
+        }
+      }
+    }, 500); 
+
+    return () => clearInterval(colorChangeInterval);
+  }, [letterColors]); // Run when letterColors changes
+
     return (
       <Container className="py-5 intro-container">
         <Row>
           <Col md={12}>
-            <h1 className="text-center">My Modern Software Solutions</h1>
+          {/* add logo transition animation, two logos */}
+            <h1 className="text-center">{title}</h1>
           </Col>
         </Row>
         <Row className="mt-4">
           <Col md={4}>
             <Card>
-              <Card.Img variant="top" src="Neslo.ico" />
+              <Card.Img variant="top" src="Neslo.ico" className='image' />
               <Card.Body>
-                <Card.Title>Project 1</Card.Title>
-                <Card.Subtitle>Neslo</Card.Subtitle>
+                <Card.Title>Neslo</Card.Title>
                 <Card.Text>
                   Neslo is a Premium Windows and Doors company based out of central Alberta.
                 </Card.Text>
@@ -33,10 +81,9 @@ const Intro = () => {
           </Col>
           <Col md={4}>
             <Card>
-              <Card.Img variant="top" src="Skalarly.ico"/>
+              <Card.Img variant="top" src="Skalarly.ico" className='image'/>
               <Card.Body>
-                <Card.Title>Project 2</Card.Title>
-                <Card.Subtitle>Skalarly</Card.Subtitle>
+                <Card.Title>Skalarly</Card.Title>
                 <Card.Text>
                   Skalarly is an academic enhancing social media platform.
                 </Card.Text>
