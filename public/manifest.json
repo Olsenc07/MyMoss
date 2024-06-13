@@ -4,12 +4,12 @@
   "description": "MyMoss offers modern software solutions for your business or personal needs.",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "MyMoss1.webp",
       "sizes": "16x16 32x32 48x48 64x64 96x96 128x128 144x144 152x152 192x192 256x256 384x384 512x512",
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
+      "src": "MyMoss1.png",
       "sizes": "180x180",
       "type": "image/png"
     }

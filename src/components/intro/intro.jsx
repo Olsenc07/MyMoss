@@ -17,7 +17,7 @@ const Intro = () => {
       // moss gets thicker green color
       setLetterColors(prevColors => ({
         ...prevColors,
-        [fullTitle[i]]: 'lightgreen' 
+        [fullTitle[i]]: '#8BC34A' 
       }));
       i++;
       if (i > fullTitle.length) {
@@ -41,10 +41,10 @@ const Intro = () => {
   useEffect(() => {
     const colorChangeInterval = setInterval(() => {
       for (const letter in letterColors) {
-        if (letterColors[letter] === 'lightgreen') {
+        if (letterColors[letter] === '#8BC34A') {
           setLetterColors(prevColors => ({
             ...prevColors,
-            [letter]: 'darkgreen' // moss fully grown
+            [letter]: '#4CAF50' // moss fully grown
           }));
         }
       }
@@ -53,63 +53,80 @@ const Intro = () => {
     return () => clearInterval(colorChangeInterval);
   }, [letterColors]); // Run when letterColors changes
 
+  const ProjectCard = ({ image, title, description, repoUrl, url }) => {
     return (
-      <Container className="py-5 intro-container">
-        <Row>
-          <Col md={12}>
-          {/* add logo transition animation, two logos */}
-            <h1 className="text-center">{title}</h1>
-          </Col>
-        </Row>
-        <Row className="mt-4">
-          <Col md={4}>
-            <Card>
-              <Card.Img variant="top" src="Neslo.ico" className='image' />
-              <Card.Body>
-                <Card.Title>Neslo</Card.Title>
-                <Card.Text>
-                  Neslo is a Premium Windows and Doors company based out of central Alberta.
-                </Card.Text>
-                <Button variant="primary" href="https://github.com/Olsenc07/Neslo">
+      <Col md={4}>
+        <Card>
+          <Card.Img variant="top" src={image} className='image' />
+          <Card.Body>
+            <Card.Title>{title}</Card.Title>
+            <Card.Text>{description}</Card.Text>
+            <div className='url-buttons'>
+              <div>
+                <Button variant="primary" href={repoUrl}>
                   Code Repository
                 </Button>
-                <Button variant="secondary" href="https://www.neslo.ca">
+              </div>
+              <div>
+                <Button variant="secondary" href={url}>
                   Live Demo
                 </Button>
-              </Card.Body>
-            </Card>
-          </Col>
-          <Col md={4}>
-            <Card>
-              <Card.Img variant="top" src="Skalarly.ico" className='image'/>
-              <Card.Body>
-                <Card.Title>Skalarly</Card.Title>
-                <Card.Text>
-                  Skalarly is an academic enhancing social media platform.
-                </Card.Text>
-                <Button variant="primary" href="https://github.com/Olsenc07/Skalarly">
-                  Code Repository
-                </Button>
-                <Button variant="secondary" href="https://www.skalarly.com">
-                  Live Demo
-                </Button>
-              </Card.Body>
-            </Card>
-          </Col>
-        </Row>
-     {/* project details */}
-     <Row className="mt-4">
+              </div>
+            </div>
+          </Card.Body>
+        </Card>
+      </Col>
+    );
+  };
+
+  const projects = [
+    {
+      image: 'Neslo.ico',
+      title: 'Neslo',
+      description: 'Neslo is a Premium Windows and Doors company based out of central Alberta.',
+      repoUrl: 'https://github.com/Olsenc07/Neslo',
+      url: 'https://www.neslo.ca'
+    },
+    {
+      image: 'Skalarly.ico',
+      title: 'Skalarly',
+      description: 'Skalarly is an academic enhancing social media platform.',
+      repoUrl: 'https://github.com/Olsenc07/Skalarly',
+      url: 'https://www.skalarly.com'
+    }
+  ];
+
+  return (
+    <Container className="py-5 intro-container">
+      <Row>
+        <Col md={12}>
+          <h1 className="text-center">
+            {title.split('').map((letter, index) => (
+              <span 
+                key={index} 
+                style={{ color: letterColors[letter] || 'black' }} // Apply color from state
+              >
+                {letter}
+              </span>
+            ))}
+          </h1>
+        </Col>
+      </Row>
+      <Row className="mt-4">
+        {projects.map((project, index) => (
+          <ProjectCard key={index} {...project} />
+        ))}
+      </Row>
+      {/* project details */}
+      <Row className="mt-4">
         <Col md={12} className="text-center">
           <Link to="/projects">
             <Button variant="outline-primary">View All Projects</Button>
           </Link>
         </Col>
       </Row>
-      </Container>
-// Explain more
-// with an extensive knowledge stacks we can optimize your needs and budget
-// instead of forcing you in a generic category, we meet your needs.
-    );
-  };
-  
-  export default Intro;
+    </Container>
+  );
+};
+
+export default Intro;
