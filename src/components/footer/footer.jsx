@@ -4,11 +4,11 @@ import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope  } from '@fortawesome/free-regular-svg-icons';
 import { faPhone } from '@fortawesome/free-solid-svg-icons';
 
-import './footer.module.scss';
+import footerStyles from './footer.module.scss';
 
 const Footer = () => {
   return (
-    <footer className="position-absolute bottom-0 d-flex w-100 p-3 bg-light">
+    <footer className={`${footerStyles.footer} p-3`} > 
       <div className="container">
         <div className="row align-items-center"> 
           <div className="d-flex flex-column align-items-center"> 

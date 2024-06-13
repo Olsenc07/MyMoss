@@ -1,81 +1,114 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Container, Row, Col, Card, Button } from 'react-bootstrap';
-import './intro.module.scss';
+import { styled } from '@mui/material/styles';
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Button from '@mui/material/Button';
+import { keyframes } from 'styled-components';
+import introStyles from './intro.module.scss';
+
 
 const Intro = () => {
-  // Title Moss Aniamtion
-  const [title, setTitle] = useState('');
-  const fullTitle = 'My Modern Software Solutions';
-  const [mossGrowth, setMossGrowth] = useState(0);
-  const [letterColors, setLetterColors] = useState({});
+  // Title Moss Animation
+  const [showFullTitle, setShowFullTitle] = useState(false);
 
+  // Define keyframes for the text and color transition
+  const growText = keyframes`
+    0% {
+      content: "MyMoss";
+    }
+    100% {
+      content: "My Modern Software Solutions";
+    }
+  `;
+
+  const darkenGreen = keyframes`
+    0% {
+      color: lightgreen;
+    }
+    100% {
+      color: darkgreen;
+    }
+  `;
+
+  const StyledTypography = styled(Typography)`
+    animation: ${growText} 3s ease-in-out;
+    span {
+      animation: ${darkenGreen} 1s ease-in-out;
+      font-family: 'Playfair Display', serif;
+    }
+  `;
   useEffect(() => {
-    let i = 0;
-    const titleInterval = setInterval(() => {
-      setTitle(fullTitle.substring(0, i + 1));
-      // moss gets thicker green color
-      setLetterColors(prevColors => ({
-        ...prevColors,
-        [fullTitle[i]]: '#8BC34A' 
-      }));
-      i++;
-      if (i > fullTitle.length) {
-        clearInterval(titleInterval);
-      }
-    }, 100); 
+    setTimeout(() => {
+      setShowFullTitle(true);
+    }, 3000);
+  }, []); 
 
-    const mossInterval = setInterval(() => {
-      setMossGrowth(prevGrowth => prevGrowth + 0.03); 
-      if (mossGrowth >= 1) {
-        clearInterval(mossInterval);
-      }
-    }, 77); 
-
-    return () => {
-      clearInterval(titleInterval);
-      clearInterval(mossInterval);
-    };
-  }, []);
-
-  useEffect(() => {
-    const colorChangeInterval = setInterval(() => {
-      for (const letter in letterColors) {
-        if (letterColors[letter] === '#8BC34A') {
-          setLetterColors(prevColors => ({
-            ...prevColors,
-            [letter]: '#4CAF50' // moss fully grown
-          }));
-        }
-      }
-    }, 500); 
-
-    return () => clearInterval(colorChangeInterval);
-  }, [letterColors]); // Run when letterColors changes
-
+  // Define letter colors
+  const letterColors = {
+    'M': 'lightgreen',
+    'y': 'darkgreen',
+    ' ': 'lightgreen',
+    'M': 'darkgreen',
+    'o': 'lightgreen',
+    'd': 'darkgreen',
+    'e': 'lightgreen',
+    'r': 'darkgreen',
+    'n': 'lightgreen',
+    'S': 'darkgreen',
+    'o': 'lightgreen',
+    'f': 'darkgreen',
+    't': 'lightgreen',
+    'w': 'darkgreen',
+    'a': 'lightgreen',
+    'r': 'darkgreen',
+    'e': 'lightgreen',
+    ' ': 'lightgreen',
+    'S': 'darkgreen',
+    'o': 'lightgreen',
+    'l': 'darkgreen',
+    'u': 'lightgreen',
+    't': 'darkgreen',
+    'i': 'lightgreen',
+    'o': 'lightgreen',
+    'n': 'darkgreen',
+    's': 'lightgreen'
+  };
   const ProjectCard = ({ image, title, description, repoUrl, url }) => {
     return (
-      <Col md={4}>
+      <Grid item xs={12} md={4}>
         <Card>
-          <Card.Img variant="top" src={image} className='image' />
-          <Card.Body>
-            <Card.Title>{title}</Card.Title>
-            <Card.Text>{description}</Card.Text>
-            <div className='url-buttons'>
-              <div>
-                <Button variant="primary" href={repoUrl}>
+          <CardMedia
+            component="img"
+            className={introStyles.image}
+            image={image}
+            alt={title}
+          />
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="div">
+              {title}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              {description}
+            </Typography>
+            <Grid container spacing={2} justifyContent="space-between">
+              <Grid item>
+                <Button variant="contained" href={repoUrl}>
                   Code Repository
                 </Button>
-              </div>
-              <div>
-                <Button variant="secondary" href={url}>
+              </Grid>
+              <Grid item>
+                <Button variant="contained" href={url}>
                   Live Demo
                 </Button>
-              </div>
-            </div>
-          </Card.Body>
+              </Grid>
+            </Grid>
+          </CardContent>
         </Card>
-      </Col>
+      </Grid>
     );
   };
 
@@ -97,35 +130,42 @@ const Intro = () => {
   ];
 
   return (
-    <Container className="py-5 intro-container">
-      <Row>
-        <Col md={12}>
-          <h1 className="text-center">
-            {title.split('').map((letter, index) => (
+    <Grid container spacing={2} className="introStyles.intro_container">
+      <Grid item xs={12}>
+        <StyledTypography variant="h1" align="center" title="My Modern Software Solutions">
+          {showFullTitle ? (
+            title.split('').map((letter, index) => (
               <span 
                 key={index} 
-                style={{ color: letterColors[letter] || 'black' }} // Apply color from state
+                style={{ color: letterColors[letter] }} // Apply color from state
               >
                 {letter}
               </span>
-            ))}
-          </h1>
-        </Col>
-      </Row>
-      <Row className="mt-4">
-        {projects.map((project, index) => (
-          <ProjectCard key={index} {...project} />
-        ))}
-      </Row>
+            ))
+          ) : (
+            // Display "My Moss" for 3 seconds
+            <span style={{ fontSize: '3rem' }}>My Moss</span>
+          )}
+        </StyledTypography>
+      </Grid>
+      <Grid item xs={12}>
+        <Grid container spacing={2} justifyContent="center">
+          {projects.map((project, index) => (
+            <ProjectCard key={index} {...project} />
+          ))}
+        </Grid>
+      </Grid>
       {/* project details */}
-      <Row className="mt-4">
-        <Col md={12} className="text-center">
-          <Link to="/projects">
-            <Button variant="outline-primary">View All Projects</Button>
-          </Link>
-        </Col>
-      </Row>
-    </Container>
+      <Grid item xs={12}>
+        <Grid container justifyContent="center">
+          <Grid item>
+            <Link to="/projects">
+              <Button variant="outlined">View All Projects</Button>
+            </Link>
+          </Grid>
+        </Grid>
+      </Grid>
+    </Grid>
   );
 };
 

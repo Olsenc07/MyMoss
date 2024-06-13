@@ -1,4 +1,4 @@
-.intro-container{
+.intro_container{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -22,3 +22,24 @@
     }
     max-height: 150px;
 }
+
+.url_buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+  }
+  
+  .projects_nav_btn {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+  
+  .projects_nav_btn button {
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+  }
+  
+  .projects_nav_btn button:hover {
+    background-color: #4CAF50; /* Moss green background on hover */
+  }
