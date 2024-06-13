@@ -35,9 +35,9 @@ const Intro = () => {
   `;
 
   const StyledTypography = styled(Typography)`
-    animation: ${growText} 3s ease-in-out;
+    animation: ${growText} 7s ease-in-out;
     span {
-      animation: ${darkenGreen} 1s ease-in-out;
+      animation: ${darkenGreen} 3s ease-in-out;
       font-family: 'Playfair Display', serif;
     }
   `;
@@ -51,7 +51,7 @@ const Intro = () => {
   const letterColors = {
     'M': 'lightgreen',
     'y': 'darkgreen',
-    ' ': 'lightgreen',
+    ' ': '',
     'M': 'darkgreen',
     'o': 'lightgreen',
     'd': 'darkgreen',
@@ -66,27 +66,29 @@ const Intro = () => {
     'a': 'lightgreen',
     'r': 'darkgreen',
     'e': 'lightgreen',
-    ' ': 'lightgreen',
+    ' ': '',
     'S': 'darkgreen',
     'o': 'lightgreen',
     'l': 'darkgreen',
     'u': 'lightgreen',
     't': 'darkgreen',
     'i': 'lightgreen',
-    'o': 'lightgreen',
-    'n': 'darkgreen',
-    's': 'lightgreen'
+    'o': 'darkgreen',
+    'n': 'lightgreen',
+    's': 'darkgreen'
   };
   const ProjectCard = ({ image, title, description, repoUrl, url }) => {
     return (
       <Grid item xs={12} md={4}>
         <Card>
+          <div className='img-container'>
           <CardMedia
             component="img"
             className={introStyles.image}
             image={image}
             alt={title}
           />
+          </div>
           <CardContent>
             <Typography gutterBottom variant="h5" component="div">
               {title}
@@ -96,7 +98,7 @@ const Intro = () => {
             </Typography>
             <Grid container spacing={2} justifyContent="space-between">
               <Grid item>
-                <Button variant="contained" href={repoUrl}>
+                <Button variant="contained" className={introStyles.code_rep_btn} href={repoUrl}>
                   Code Repository
                 </Button>
               </Grid>
@@ -132,9 +134,9 @@ const Intro = () => {
   return (
     <Grid container spacing={2} className="introStyles.intro_container">
       <Grid item xs={12}>
-        <StyledTypography variant="h1" align="center" title="My Modern Software Solutions">
+        <StyledTypography align="center" title="My Modern Software Solutions">
           {showFullTitle ? (
-            title.split('').map((letter, index) => (
+            "My Modern Software Solutions".split('').map((letter, index) => (
               <span 
                 key={index} 
                 style={{ color: letterColors[letter] }} // Apply color from state
@@ -144,7 +146,7 @@ const Intro = () => {
             ))
           ) : (
             // Display "My Moss" for 3 seconds
-            <span style={{ fontSize: '3rem' }}>My Moss</span>
+            <span >My Moss</span>
           )}
         </StyledTypography>
       </Grid>
