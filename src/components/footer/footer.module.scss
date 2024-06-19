@@ -1,6 +1,26 @@
-.profile-pic{
-    border-radius: 50%;
-    width: 100%;
+.profile-pic {
+    border-radius: 27px;
+    width: 40vw;
     height: auto;
-    object-fit: cover;
+  @media (min-width: 601px) {
+        width: 27vw;
+      height: auto;
+    }
+  
+  
+  @media (min-width: 1025px) {
+        width: 12vw;
+        height: auto;
+    }
+    max-height: 120px;
+    border-radius: 15px;
+    box-shadow: 1px 1px 3px grey;
+    border: 1px groove;
+}
+.footer{
+    display: flex;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    background-color: var(--armyGreen);
 }

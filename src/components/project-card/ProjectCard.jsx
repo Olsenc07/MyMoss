@@ -18,7 +18,7 @@ import React, { useState, useRef, useEffect } from "react";
   return (
     <div className={`project-card ${animation} ${isVisible ? 'visible' : ''}`} ref={cardRef}>
       {/* Company Image */}
-      <img src={image} alt={title} />
+      <img className="img-fluid" src={image} alt={title} />
       {/* Company Name */}
       <h3>{title}</h3>
       <p>{description}</p>

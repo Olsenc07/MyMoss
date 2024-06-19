@@ -4,17 +4,17 @@ import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope  } from '@fortawesome/free-regular-svg-icons';
 import { faPhone } from '@fortawesome/free-solid-svg-icons';
 
-import './footer.module.scss';
+import footerStyles from './footer.module.scss';
 
 const Footer = () => {
   return (
-    <footer className="position-absolute bottom-0 d-flex w-100 p-3 bg-light">
+    <footer className={`${footerStyles.footer} p-3`} > 
       <div className="container">
         <div className="row align-items-center"> 
           <div className="d-flex flex-column align-items-center"> 
-          <div>
+          {/* <div className="img-fluid img">
             <img src='chazz.jpg' alt="Chase Olsen" className="profile-pic" />
-          </div>
+          </div> */}
             <h3 className="ms-3">Chase Olsen</h3> 
           </div>
           <div className="col-md-8">
@@ -34,7 +34,7 @@ const Footer = () => {
                 </div>
               </div>
               <div className='row'>
-              <h6 className="col-12 mb-2">Socials</h6>
+              <h6 className="col-12 mb-2">Connect With Me</h6>
               <div className="col-12 col-md-6">
                   <a href="https://www.linkedin.com/in/chase-ol/" className="text-dark d-flex align-items-center" target="_blank" rel="noopener noreferrer">
                   <FontAwesomeIcon icon={faLinkedin}  className="me-2"/>
