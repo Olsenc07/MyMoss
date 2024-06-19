@@ -1,91 +1,84 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import { keyframes } from 'styled-components';
 import introStyles from './intro.module.scss';
 
 
 const Intro = () => {
-  // Title Moss Animation
-  const [showFullTitle, setShowFullTitle] = useState(false);
-
+  const animationRef = useRef(null);
+  const [animationContent, setAnimationContent] = useState("MyMoss");
   // Define keyframes for the text and color transition
-  const growText = keyframes`
+  const MyMossExit = keyframes`
     0% {
       content: "MyMoss";
-    }
+    },
+    25% {
+      content: "My Mo s s";
+    },
+    50% {
+      content: "My Mod So So";
+    },
+    75% {
+      content: "My Moder Softw Soluti";
+    },
     100% {
       content: "My Modern Software Solutions";
-    }
-  `;
+    }`;
 
   const darkenGreen = keyframes`
     0% {
-      color: lightgreen;
+      color: var(--mossGreen);
     }
     100% {
-      color: darkgreen;
-    }
-  `;
+      color: var(--lawnsGreen);
+    }`;
 
-  const StyledTypography = styled(Typography)`
-    animation: ${growText} 7s ease-in-out;
-    span {
-      animation: ${darkenGreen} 3s ease-in-out;
-      font-family: 'Playfair Display', serif;
-    }
-  `;
-  useEffect(() => {
-    setTimeout(() => {
-      setShowFullTitle(true);
-    }, 3000);
-  }, []); 
+ 
+  const MyMossOut = styled(Typography)`
+  span {
+    animation: ${MyMossExit} 5s ease-in, ${darkenGreen} 7s linear;
+    font-family: 'Playfair Display', serif;
+  }
+`;
 
-  // Define letter colors
-  const letterColors = {
-    'M': 'lightgreen',
-    'y': 'darkgreen',
-    ' ': '',
-    'M': 'darkgreen',
-    'o': 'lightgreen',
-    'd': 'darkgreen',
-    'e': 'lightgreen',
-    'r': 'darkgreen',
-    'n': 'lightgreen',
-    'S': 'darkgreen',
-    'o': 'lightgreen',
-    'f': 'darkgreen',
-    't': 'lightgreen',
-    'w': 'darkgreen',
-    'a': 'lightgreen',
-    'r': 'darkgreen',
-    'e': 'lightgreen',
-    ' ': '',
-    'S': 'darkgreen',
-    'o': 'lightgreen',
-    'l': 'darkgreen',
-    'u': 'lightgreen',
-    't': 'darkgreen',
-    'i': 'lightgreen',
-    'o': 'darkgreen',
-    'n': 'lightgreen',
-    's': 'darkgreen'
-  };
+const getAnimationContent = (progress) => {
+  if (progress < 0.25) {
+    return "MyMoss";
+  } else if (progress < 0.5) {
+    return "My Mo s s";
+  } else if (progress < 0.75) {
+    return "My Mod So So";
+  } else if (progress < 1) {
+    return "My Moder Softw Soluti";
+  } else {
+    return "My Modern Software Solutions";
+  }
+};
+
+useEffect(() => {
+  const intervalId = setInterval(() => {
+    const progress = (Date.now() - startTime) / animationDuration;
+    const content = getAnimationContent(progress);
+    setAnimationContent(content);
+  }, 700); // Adjust the interval as needed
+
+  return () => clearInterval(intervalId);
+}, []);
+
   const ProjectCard = ({ image, title, description, repoUrl, url }) => {
     return (
       <Grid item xs={12} md={4}>
         <Card>
           <div className='img-container'>
-          <CardMedia
-            component="img"
+          <img
             className={introStyles.image}
-            image={image}
+            src={image}
             alt={title}
           />
           </div>
@@ -133,22 +126,10 @@ const Intro = () => {
 
   return (
     <Grid container spacing={2} className="introStyles.intro_container">
-      <Grid item xs={12}>
-        <StyledTypography align="center" title="My Modern Software Solutions">
-          {showFullTitle ? (
-            "My Modern Software Solutions".split('').map((letter, index) => (
-              <span 
-                key={index} 
-                style={{ color: letterColors[letter] }} // Apply color from state
-              >
-                {letter}
-              </span>
-            ))
-          ) : (
-            // Display "My Moss" for 3 seconds
-            <span >My Moss</span>
-          )}
-        </StyledTypography>
+         <Grid item xs={12}>
+         <MyMossOut align="center" ref={animationRef}>
+            <span className={introStyles.moss_letters}>{animationContent}</span>
+         </MyMossOut>
       </Grid>
       <Grid item xs={12}>
         <Grid container spacing={2} justifyContent="center">
