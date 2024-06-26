@@ -35,7 +35,10 @@ import React, { useState, useRef, useEffect } from "react";
         <li><strong>SaaS:</strong> {technologies.saas.join(', ')}</li>
       </ul>
       <a href={repoUrl} target="_blank" rel="noopener noreferrer">Code Repository</a>
-      <a href={url} target="_blank" rel="noopener noreferrer">Live Demo</a>
+      <a href={url} onClick={(e) => {
+        e.preventDefault(); 
+        window.open(url, '_blank', 'noopener,noreferrer'); // Open in new tab
+      }}>Live Demo</a>
     </div>
   );
 };

@@ -1,22 +1,22 @@
 :root {
   --mossGreen: #4CAF50; 
-  --darkOliveGreen: #556B2F;
-  --oliveDrab: #6B8E23;
-  --artichoke: #8F9779;
-  --oxley: #739973;
-  --fernGreen: #4F7942;
-  --laurelGreen: #7A9B76;
-  --armyGreen: #4B5320;
-  --lawnGreen: #7CFC00;
-  --polishedPine: #6AAB8E;
-  --camouflageGreen: #78866B;
+  --niceBrown: #8B4513;
+  --deepBlue: #00008B; 
+  --tealBlue: #008080; 
+  --lightBlue: #ADD8E6; 
+  --forestGreen: #228B22; 
+  --seaGreen: #2E8B57; 
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-family: 'Times New Roman', serif;
 }
 html, body {
   height: 100%;
   margin: 0%;
-  font-family: 'Playfair Display', serif;
 }
 body {
-  background-color: var(--oxley); 
+  background-color: var(--mossGreen); 
 }
-

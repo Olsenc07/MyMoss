@@ -7,6 +7,14 @@
     flex-direction: column;
     align-items: center;
 }
+button[contained]{
+  // background-color: var(--armyGreen);
+  color: white;
+}
+button[outlined]{
+  // background-color: var(--armyGreen);
+  color: white;
+}
 CardMedia.image {
     display: flex;
     border-radius: 15px;
@@ -26,7 +34,7 @@ CardMedia.image {
     }
     max-height: 150px;
 }
-.img-container{
+.img_container{
     display: flex;
     justify-content: center;
 }

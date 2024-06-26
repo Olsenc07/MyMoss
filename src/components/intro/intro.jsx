@@ -11,41 +11,49 @@ import introStyles from './intro.module.scss';
 
 
 const Intro = () => {
-  const animationRef = useRef(null);
-  const [animationContent, setAnimationContent] = useState("MyMoss");
+  const [progress, setProgress] = useState(0); // State for animation progress
+  const animationDuration = 5000;
   // Define keyframes for the text and color transition
   const MyMossExit = keyframes`
     0% {
       content: "MyMoss";
+       color: var(--oliveDrab);
     },
     25% {
       content: "My Mo s s";
+        color: var(--oliveDrab);
     },
     50% {
       content: "My Mod So So";
+        color: var(--mossGreen);
     },
     75% {
       content: "My Moder Softw Soluti";
+      color: var(--mossGreen);
     },
     100% {
       content: "My Modern Software Solutions";
-    }`;
-
-  const darkenGreen = keyframes`
-    0% {
-      color: var(--mossGreen);
-    }
-    100% {
       color: var(--lawnsGreen);
     }`;
 
- 
-  const MyMossOut = styled(Typography)`
-  span {
-    animation: ${MyMossExit} 5s ease-in, ${darkenGreen} 7s linear;
-    font-family: 'Playfair Display', serif;
-  }
-`;
+    const MyMossOut = styled(Typography)`
+    span {
+      animation: ${MyMossExit} ${progress * 5}s ease-in;
+    }`;
+
+useEffect(() => {
+  const intervalId = setInterval(() => {
+    setProgress((prevProgress) => {
+      if (prevProgress < 1) {
+        return prevProgress + 0.01; // Increment progress by 0.01
+      } else {
+        return 1; // Stop at 1
+      }
+    });
+  }, 50);
+
+  return () => clearInterval(intervalId);
+}, []);
 
 const getAnimationContent = (progress) => {
   if (progress < 0.25) {
@@ -61,21 +69,11 @@ const getAnimationContent = (progress) => {
   }
 };
 
-useEffect(() => {
-  const intervalId = setInterval(() => {
-    const progress = (Date.now() - startTime) / animationDuration;
-    const content = getAnimationContent(progress);
-    setAnimationContent(content);
-  }, 700); // Adjust the interval as needed
-
-  return () => clearInterval(intervalId);
-}, []);
-
   const ProjectCard = ({ image, title, description, repoUrl, url }) => {
     return (
       <Grid item xs={12} md={4}>
         <Card>
-          <div className='img-container'>
+          <div className={introStyles.img_container}>
           <img
             className={introStyles.image}
             src={image}
@@ -91,12 +89,12 @@ useEffect(() => {
             </Typography>
             <Grid container spacing={2} justifyContent="space-between">
               <Grid item>
-                <Button variant="contained" className={introStyles.code_rep_btn} href={repoUrl}>
+                <Button contained variant="contained" className={introStyles.code_rep_btn} href={repoUrl}>
                   Code Repository
                 </Button>
               </Grid>
               <Grid item>
-                <Button variant="contained" href={url}>
+                <Button contained variant="contained" href={url}>
                   Live Demo
                 </Button>
               </Grid>
@@ -125,10 +123,10 @@ useEffect(() => {
   ];
 
   return (
-    <Grid container spacing={2} className="introStyles.intro_container">
+    <Grid container spacing={2} className={introStyles.intro_container}>
          <Grid item xs={12}>
-         <MyMossOut align="center" ref={animationRef}>
-            <span className={introStyles.moss_letters}>{animationContent}</span>
+         <MyMossOut align="center">
+         <span className={introStyles.moss_letters}>{getAnimationContent(progress)}</span>
          </MyMossOut>
       </Grid>
       <Grid item xs={12}>
@@ -143,7 +141,7 @@ useEffect(() => {
         <Grid container justifyContent="center">
           <Grid item>
             <Link to="/projects">
-              <Button variant="outlined">View All Projects</Button>
+              <Button outlined variant="outlined">View All Projects</Button>
             </Link>
           </Grid>
         </Grid>

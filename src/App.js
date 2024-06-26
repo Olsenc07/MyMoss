@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
-
+import './app.scss';
 // intro can be on this page
 import Intro from './components/intro/intro';
 // import Contact from './components/contact/contact.component';
