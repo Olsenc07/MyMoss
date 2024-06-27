@@ -17,7 +17,7 @@ const Footer = () => {
           </div> */}
             <h3 className="ms-3">Chase Olsen</h3> 
           </div>
-          <div className="col-md-8">
+          <div className="col-md-8 d-flex flex-row">
           <div className="col-12 mb-3">
               <h6 className="mb-2">Contact</h6>
                 <div className="d-flex align-items-center mb-2">

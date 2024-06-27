@@ -8,7 +8,7 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install needed packages specified in package*.json
-RUN npm install
+RUN npm run install
 
 # Copy rest of source code from host to image filesystem
 COPY . .

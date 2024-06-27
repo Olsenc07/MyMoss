@@ -43,7 +43,8 @@ CardMedia.image {
     justify-content: space-between;
     margin-top: 1rem;
   }
-  .moss_letters{
+  .moss_initletters{
+    background-color: var(--lightBlue);
     font-size: 2.1em ; 
     @media (min-width: 601px) {
     font-size: 1.5em; 
@@ -52,6 +53,21 @@ CardMedia.image {
         font-size: 2.2vw; 
     }
   }
+.moss_finalletters{
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent; 
+  background-image: linear-gradient(45deg, var(--mossGreen), transparent, var(--seaGreen));
+  background-size: 200% 200%; 
+  animation: gradient-flow 10s linear infinite;
+  font-size: 2.1em ; 
+  @media (min-width: 601px) {
+  font-size: 1.5em; 
+  }
+  @media (min-width: 1025px) {
+      font-size: 2.2vw; 
+  }
+}
   .projects_nav_btn {
     display: flex;
     justify-content: center;
@@ -64,5 +80,13 @@ CardMedia.image {
   }
   
   .projects_nav_btn button:hover {
-    background-color: #4CAF50; /* Moss green background on hover */
+    background-color: #4CAF50; 
+  }
+  @keyframes gradient-flow {
+    0%{
+      background-position: 200% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
   }

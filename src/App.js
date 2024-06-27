@@ -18,7 +18,6 @@ function App() {
           <Route path="/projects" element={<ProjectsPage />} />
           <Route path="*" element={<Intro />} />
         </Routes>
-        <Footer />
     </Router>
   );
 }

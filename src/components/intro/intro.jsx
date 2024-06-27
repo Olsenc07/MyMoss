@@ -11,63 +11,13 @@ import introStyles from './intro.module.scss';
 
 
 const Intro = () => {
-  const [progress, setProgress] = useState(0); // State for animation progress
-  const animationDuration = 5000;
-  // Define keyframes for the text and color transition
-  const MyMossExit = keyframes`
-    0% {
-      content: "MyMoss";
-       color: var(--oliveDrab);
-    },
-    25% {
-      content: "My Mo s s";
-        color: var(--oliveDrab);
-    },
-    50% {
-      content: "My Mod So So";
-        color: var(--mossGreen);
-    },
-    75% {
-      content: "My Moder Softw Soluti";
-      color: var(--mossGreen);
-    },
-    100% {
-      content: "My Modern Software Solutions";
-      color: var(--lawnsGreen);
-    }`;
+  const [showMyMossIn, setShowMyMossIn] = useState(false);
 
-    const MyMossOut = styled(Typography)`
-    span {
-      animation: ${MyMossExit} ${progress * 5}s ease-in;
-    }`;
-
-useEffect(() => {
-  const intervalId = setInterval(() => {
-    setProgress((prevProgress) => {
-      if (prevProgress < 1) {
-        return prevProgress + 0.01; // Increment progress by 0.01
-      } else {
-        return 1; // Stop at 1
-      }
-    });
-  }, 50);
-
-  return () => clearInterval(intervalId);
-}, []);
-
-const getAnimationContent = (progress) => {
-  if (progress < 0.25) {
-    return "MyMoss";
-  } else if (progress < 0.5) {
-    return "My Mo s s";
-  } else if (progress < 0.75) {
-    return "My Mod So So";
-  } else if (progress < 1) {
-    return "My Moder Softw Soluti";
-  } else {
-    return "My Modern Software Solutions";
-  }
-};
+  useEffect(() => {
+      setTimeout(() => {
+        setShowMyMossIn(true);
+      }, 2500); 
+  }, []);
 
   const ProjectCard = ({ image, title, description, repoUrl, url }) => {
     return (
@@ -125,9 +75,16 @@ const getAnimationContent = (progress) => {
   return (
     <Grid container spacing={2} className={introStyles.intro_container}>
          <Grid item xs={12}>
-         <MyMossOut align="center">
-         <span className={introStyles.moss_letters}>{getAnimationContent(progress)}</span>
-         </MyMossOut>
+         {!showMyMossIn && (
+      <div align="center">
+         <h1 className={introStyles.moss_initletters}>MyMoss</h1>
+      </div>
+    )}
+    {showMyMossIn && (  
+      <div align="center">
+        <h1 className={introStyles.moss_finalletters}>My Modern Software Solutions</h1>
+      </div>
+    )}
       </Grid>
       <Grid item xs={12}>
         <Grid container spacing={2} justifyContent="center">
