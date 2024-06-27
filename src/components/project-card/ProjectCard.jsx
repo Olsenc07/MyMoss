@@ -34,6 +34,8 @@ import React, { useState, useRef, useEffect } from "react";
         <li><strong>CI/CD:</strong> {technologies.ciCD.join(', ')}</li>
         <li><strong>SaaS:</strong> {technologies.saas.join(', ')}</li>
       </ul>
+      add button styles, fix links, imgs shown, animate
+         <Button contained variant="contained"
       <a href={repoUrl} target="_blank" rel="noopener noreferrer">Code Repository</a>
       <a href={url} onClick={(e) => {
         e.preventDefault(); 
