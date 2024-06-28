@@ -48,8 +48,8 @@ const ExpandMore = styled((props) => {
   return (
     <Card ref={cardRef}>
     <CardHeader avatar={
-      <Avatar>
-      <img className="img-fluid" src={image} alt={title} />
+      <Avatar sx={{ bgcolor: 'white' }}>
+      <img className="img-fluid " src={image} alt={title} />
       </Avatar>
     }
       title={title} >

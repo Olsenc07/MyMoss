@@ -86,14 +86,14 @@ const ProjectsInfo = () => {
 
 return(
     <div className="container"> 
-    <div className="row"  justifyContent="center"> 
-        {projects.map((project, index) => (
+        <div className="row justify-content-center"> 
+            {projects.map((project, index) => (
             <div className="col-md-4 mb-4" key={index}> 
                 <ProjectCard message={project} />
             </div>
         ))}
+        </div>
     </div>
-</div>
 )
 };
 
