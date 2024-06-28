@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope  } from '@fortawesome/free-regular-svg-icons';
 import { faPhone } from '@fortawesome/free-solid-svg-icons';
-
 import footerStyles from './footer.module.scss';
 
 const Footer = () => {
@@ -12,9 +11,6 @@ const Footer = () => {
       <div className="container">
         <div className="row align-items-center"> 
           <div className="d-flex flex-column"> 
-          {/* <div className="img-fluid img">
-            <img src='chazz.jpg' alt="Chase Olsen" className="profile-pic" />
-          </div> */}
             <h3 className="ms-3">Chase Olsen</h3> 
           </div>
           <div className="col-md-8 d-flex flex-row">

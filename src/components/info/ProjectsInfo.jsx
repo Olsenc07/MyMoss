@@ -1,12 +1,13 @@
 import React from "react";
-import ProjectCard from "../components/project-card/ProjectCard.jsx"
+import ProjectCard from "../project-card/ProjectCard.jsx"
 
-const ProjectsPage = () => {
+const ProjectsInfo = () => {
     const projects = [
         {   animation: 'slide-in-left',
             image: 'Neslo.ico',
+            imageBackground: 'Neslo_bg.jpg',
             title:  'Neslo | Premium Windows and Doors',
-            description: 'A premium windows and doors company based in cenntral Alberta.',
+            description: 'A premium windows and doors company based in central Alberta.',
             projectDetails: {
                 keyFeatures: [
                     'Custom Imagery: High-quality, tailor-made images to enhance your brand identity',
@@ -44,6 +45,7 @@ const ProjectsPage = () => {
         },
         {   animation: 'slide-in-right',
             image: 'Skalarly.ico',
+            imageBackground: 'Skalarly_bg.jpg',
             title:  'Skalarly | Academic Media',
             description: 'An academic social media platform for post secondary schools across Canada.',
             projectDetails: {
@@ -83,13 +85,16 @@ const ProjectsPage = () => {
     ]
 
 return(
-    <div>
+    <div className="container"> 
+    <div className="row"  justifyContent="center"> 
         {projects.map((project, index) => (
-        <ProjectCard key={index} message={project} />
+            <div className="col-md-4 mb-4" key={index}> 
+                <ProjectCard message={project} />
+            </div>
         ))}
     </div>
-
+</div>
 )
 };
 
-export default ProjectsPage;
+export default ProjectsInfo;
