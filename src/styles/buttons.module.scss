@@ -1,35 +1,26 @@
+@mixin btn_standard{
+  color: white;
+  border-radius: 15px;
+  font-weight: bold; 
+  transition: background-color 0.3s ease; 
+}
 Button.contained{
-    background-color: var(  --seaGreen);
-    color: white;
-    padding: 1rem 2rem; 
-    border-radius: 5px;
-    font-weight: bold; 
-    transition: background-color 0.3s ease; 
-  }
-Button.contained:hover {
-    background-color: var(--forestGreen); 
+    background-color: var(--seaGreen);
+    @include btn_standard;
   }
 Button.outlined{
     background-color: var(--mossGreen);
-    color: white;
-    padding: 1rem 2rem; 
-    border-radius: 5px; 
-    font-weight: bold; 
-    border: 2px solid white; 
-    transition: background-color 0.3s ease; 
+    @include btn_standard;
   }
-Button.outlined:hover {
-    background-color: var(--tealBlue); 
+
+Button.contained:hover, Button.outlined:hover {
+    background-color: var(--forestGreen); 
   }
 .fab{
     background-color: var(--mossGreen);
     color: white;
-    padding: 1rem 2rem; 
-    border-radius: 5px; 
-    font-weight: bold; 
-    border: 2px solid white; 
     transition: background-color 0.3s ease; 
   }
 .fab:hover {
-    background-color: var(--tealBlue); 
+    background-color: var(--niceBrown); 
   }
